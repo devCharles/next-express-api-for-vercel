@@ -13,7 +13,7 @@ app.use("/api/generations", generationsRouter);
 app.get("/api", (req, res) => {
   res.json({
     ok: true,
-    message: "/api",
+    message: "/root route",
   });
 });
 

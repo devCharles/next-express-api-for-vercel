@@ -23,3 +23,27 @@ This is a [optional catch-all route](https://nextjs.org/docs/pages/building-your
 ### Pitfall
 
 Because we are using the next api folder **ALL EXPRESS ROUTES NEED TO BE PREFIXED WITH `/API`**
+
+so all routers need to be mounted prefixing /api like in the server file
+
+```javascript
+const express = require("express");
+
+const kodersRouter = require("./routes/koders.router");
+const generationsRouter = require("./routes/generations.router");
+
+const app = express();
+app.use(express.json());
+
+app.use("/api/koders", kodersRouter);
+app.use("/api/generations", generationsRouter);
+
+app.get("/api", (req, res) => {
+  res.json({
+    ok: true,
+    message: "/api",
+  });
+});
+
+module.exports = app;
+```
